@@ -59,6 +59,7 @@ export class ContactAssistantComponent implements OnInit {
 
   }
 
+  // send demande to assistant
   send() {
     if (this.demande.subject) {
       this.isSubject = true;
