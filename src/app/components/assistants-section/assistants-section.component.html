@@ -1,0 +1,16 @@
+<section class="section-padding" id="section_3">
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-lg-12 col-12 text-center mb-4">
+                <h2>Our Assistants</h2>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 my-5 mb-lg-0" *ngFor="let elt of assistantsTable">            
+                    <app-assistant-box [assistant]="elt"></app-assistant-box>    
+            </div>
+        </div>
+        <div class="text-center">
+            <button routerLink="allAssistants" type="button" class="btn btn-outline-info btn-lg" style="font-weight: bolder;">Display All Assistants</button>
+        </div>
+
+    </div>
+</section>

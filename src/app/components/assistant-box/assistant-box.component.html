@@ -1,0 +1,47 @@
+<div class="custom-block-wrap">
+    <div class="d-flex align-items-center justify-content-center pt-3 pb-1">
+        <img [src]="assistant.avatar"
+            class="custom-block-image img-fluid rounded-circle" style="height: 200px; width: 200px;" alt="">
+    </div>
+
+
+    <div class="custom-block">
+        <div class="custom-block-body">
+            <h5 class="mb-1">{{assistant.firstName}} {{assistant.lastName | uppercase}}</h5>
+
+            <div class="rating mb-4">
+                <span class="star text-warning">&#9733;</span>
+                <span class="star text-warning">&#9733;</span>
+                <span class="star text-warning">&#9733;</span>
+                <span class="star text-warning">&#9733;</span>
+                <span class="star">&#9733;</span>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 mb-1">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-envelope-fill me-3"></i>
+                        <p class="mb-0">{{assistant.email}}</p>
+                    </div>
+                </div>
+                <div class="col-md-12 mb-1">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-telephone-fill me-3"></i>
+                        <p class="mb-0">+(216) {{assistant.tel}}</p>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-geo-alt-fill me-3"></i>
+                        <p class="mb-0">{{assistant.address}}</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <a (click)="displayAssistant(assistant._id)" class="custom-btn btn">Display</a>
+    </div>
+</div>  

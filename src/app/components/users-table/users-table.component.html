@@ -1,0 +1,59 @@
+<div class="row justify-content-end" *ngIf="roleWanted ==='user'">
+
+  <div class="col-lg-6 col-12 justify-content-center align-items-center">
+
+    <form class="custom-search-form search-form mb-2" style="margin-top: -25px !important;">
+      <div class="input-group has-validation">
+        <div class="form-floating is-invalid">
+          <input [(ngModel)]="valeur" [ngModelOptions]="{standalone: true}" #thing="ngModel" type="search"
+            style="color: black;" class="form-control" id="floatingInputGroup2" placeholder="Username">
+          <label for="floatingInputGroup2">Here filter By First Name, Last Name, Address, status</label>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<table class="table table-success table-hover my-table-hover table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Tel</th>
+      <th scope="col">Address</th>
+      <th scope="col">Role</th>
+      <th scope="col" *ngIf="roleWanted ==='user'">Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let elt of usersTab | filterUsers : valeur">
+      <td scope="row">{{elt._id}}</td>
+      <td>{{elt.firstName}}</td>
+      <td>{{elt.lastName}}</td>
+      <td>{{elt.email}}</td>
+      <td>{{elt.tel}}</td>
+      <td>{{elt.address}}</td>
+      <td>{{elt.role}}</td>
+      <td *ngIf="roleWanted ==='user'">{{elt.status}}</td>
+      <td>
+        <button type="button" class="btn btn-outline-info" (click)="displayUser(elt._id)">Display</button>
+        <button type="button" class="btn btn-outline-success" *ngIf="elt.status !== 'confirmed' && elt.role === 'user'"
+          (click)="confirmUser(elt._id)" style="margin-left: 5px;">Confirm</button>
+        <button type="button" class="btn btn-outline-danger" (click)="deleteUser(elt._id)"
+          style="margin-left: 5px;">Delete</button>
+      </td>
+    </tr>
+    <tr *ngIf="isEmpty===true">
+      <td colspan="9" *ngIf="elt.role === 'user'">
+        <div class="text-center" style="color: red;">There is no User</div>
+      </td>
+      <td colspan="8" *ngIf="elt.role === 'admin'">
+        <div class="text-center" style="color: red;">There is no Admin</div>
+      </td>
+
+    </tr>
+  </tbody>
+</table>

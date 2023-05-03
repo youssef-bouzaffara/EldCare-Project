@@ -1,0 +1,40 @@
+<table class="table table-success table-hover my-table-hover table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Client First Name</th>
+            <th scope="col">Client Last Name</th>
+            <th scope="col">Client Email</th>
+            <th scope="col">Client Tel</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr [ngClass]="{disabled : elt.status ==='withdrawn' || elt.status ==='declined'}" *ngFor="let elt of requestsTab">
+            <td scope="row">{{elt.id}}</td>
+            <td>{{elt.clientFirstName}}</td>
+            <td>{{elt.clientLastName}}</td>
+            <td>{{elt.clientEmail}}</td>
+            <td>{{elt.clientTel}}</td>
+            <td [ngClass]="
+            {'on-hold' : elt.status ==='on hold',
+             'accepted' : elt.status ==='accepted',
+             'confirmed' : elt.status ==='confirmed',
+             'declined' : elt.status ==='declined',
+             'withdrawn' : elt.status ==='withdrawn'}">{{elt.status}}</td>
+            <td>
+                <button type="button" class="btn btn-outline-info" (click)="displayDemande(elt.id)">Display</button>
+                <button type="button" class="btn btn-outline-success" *ngIf="elt.status ==='on hold'" (click)="acceptDemande(elt.id)" style="margin-left: 5px;">Accept</button>
+                <button type="button" class="btn btn-outline-danger" *ngIf="elt.status !=='declined'" (click)="declineDemande(elt.id)" style="margin-left: 5px;">Decline</button>
+            </td>
+        </tr>
+
+        <tr *ngIf="isEmpty === true">
+            <td colspan="7">
+                <div class="text-center" style="color: red;">There is no demandes at this moment</div>
+            </td>
+        </tr>
+
+    </tbody>
+</table>

@@ -1,0 +1,99 @@
+<section class="news-detail-header-section text-center">
+    <div class="section-overlay"></div>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12">
+                <h1 class="text-white">User's Details</h1>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="news-section section-padding section-bg">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-5 col-12">
+                <div class="news-block">
+                    <div class="news-block-top">
+                        <img [src]="userInfo.avatar"
+                            class="news-image img-fluid rounded-circle" style="height: 500px; width: 500px;" alt="">
+
+                        <!-- <div class="news-category-block">
+                            <h3>Name Last</h3>
+                        </div> -->
+
+                        
+                    </div>
+
+                    <div class="news-block-info">
+                        <div class="d-flex mt-2">
+                            <div class="news-block-date">
+                                <p *ngIf="!userInfo.subscriptionDate">
+                                    <i class="bi-calendar4 custom-icon me-1"></i>
+                                    Member since October 12, 2022
+                                </p>
+                                <p *ngIf="userInfo.subscriptionDate">
+                                    <i class="bi-calendar4 custom-icon me-1"></i>
+                                    Member since {{userInfo.subscriptionDate}}
+                                </p>
+                            </div>
+
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-12 mx-auto mt-4 mt-lg-0">
+
+
+                <div class="category-block d-flex flex-column">
+                    <h5 class="mb-3 mb-lg-5" style="margin-left: 200px;">Details :</h5>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td> <b>First Name :</b> </td>
+                                    <td>{{userInfo.firstName}}</td>
+                                </tr>
+                                <tr>
+                                    <td> <b>Last Name :</b> </td>
+                                    <td>{{userInfo.lastName}}</td>
+                                </tr>
+                                <tr>
+                                    <td> <b>Email :</b> </td>
+                                    <td>{{userInfo.email}}</td>
+                                </tr>
+                                <tr>
+                                    <td> <b>Telephone :</b> </td>
+                                    <td>{{userInfo.tel}}</td>
+                                </tr>
+                                <tr>
+                                    <td> <b>Address :</b> </td>
+                                    <td>{{userInfo.address}}</td>
+                                </tr>
+                                <tr>
+                                    <td> <b>Role :</b> </td>
+                                    <td>{{userInfo.role}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="text-center" style="display: flex;">
+            
+                <button *ngIf="userInfo.status !== 'confirmed' && userInfo.role === 'user'" style="flex-grow: 1; margin-right: 10px; width: 100px;" type="button" (click)="confirmUser(userInfo._id)" class="btn btn-info btn-lg">Confirm</button>
+         
+        
+                <button style="flex-grow: 1; margin-right: 10px; width: 100px;" type="button" (click)="deleteUser(userInfo._id)" class="btn btn-danger btn-lg">Delete</button>
+           
+        </div>
+    </div>
+</section>

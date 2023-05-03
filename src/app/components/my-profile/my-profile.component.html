@@ -1,0 +1,283 @@
+<section class="news-detail-header-section text-center">
+    <div class="section-overlay"></div>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12">
+                <h1 class="text-white">My Profile</h1>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="news-section section-padding section-bg">
+
+    <div class="container my-3">
+        <form action="" #editProfileForm="ngForm" (ngSubmit)="editProfileForm.form.valid && confirmEditedInfo()">
+
+
+
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="card px-3 py-2">
+                        <!-- CARD HEADER start-->
+                        <div class="card-header">
+                            <h4 class="mb-0">Profile Information</h4>
+                        </div>
+                        <!-- CARD HEADER end-->
+
+
+                        <!-- CARD BODY start-->
+                        <div class="card-body">
+
+                            <div class="row mb-3 justify-content-center">
+
+                                <!-- AVATAR FIELD start-->
+                                <div class="col-md-5 text-center">
+                                    <img [src]="photoPreview" alt="profile picture" class="img-fluid rounded-circle"
+                                        style="height: 300px; width: 300px;">
+                                    <div *ngIf="editActivated">
+                                        <div class="col-lg-12 col-12">
+                                            <input type="file" class="form-control" #filePicker
+                                                (change)="onSelectedFile($event, 'avatar')" style="visibility: hidden;">
+                                        </div>
+
+                                        <div class="col-lg-12 col-12 text-center"
+                                            style="margin-top: -70px; margin-bottom: 20px;">
+                                            <button class="btn btn-info" (click)="filePicker.click()"
+                                                type="button">Update my
+                                                Avatar </button>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- AVATAR FIELD END-->
+
+                                <!-- NAMES FIELD start-->
+                                <div class="col-md-7 " style="padding-top: 100px;">
+                                    <!-- FIRST NAME FIELD start-->
+                                    <h3 *ngIf="!editActivated">{{profile.firstName}}</h3>
+                                    <div class="form-group col-lg-12 col-12 mt-1 mb-2" *ngIf="editActivated">
+                                        <label for="firstName">First Name:</label>
+                                        <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"
+                                            [(ngModel)]="editInfo.firstName" id="firstName" #firstName="ngModel"
+                                            [ngClass]="{ 'is-invalid': editProfileForm.submitted && firstName.invalid }"
+                                            placeholder="First Name" minlength="3" required>
+                                        <div *ngIf="editProfileForm.submitted && firstName.invalid"
+                                            class="invalid-feedback">
+                                            <div *ngIf="firstName.errors.minlength">First Name must have at least 3
+                                                chars.</div>
+                                            <div *ngIf="firstName.errors.required">Email is required</div>
+
+                                        </div>
+                                    </div>
+                                    <!-- FIRST NAME FIELD end-->
+
+                                    <!-- LAST NAME FIELD start-->
+                                    <h3 *ngIf="!editActivated">{{profile.lastName | uppercase}}</h3>
+                                    <div class="form-group col-lg-12 col-12 mt-1 mb-2" *ngIf="editActivated">
+                                        <label for="lastName">Last Name:</label>
+                                        <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"
+                                            [(ngModel)]="editInfo.lastName" id="lastName" #lastName="ngModel"
+                                            [ngClass]="{ 'is-invalid': editProfileForm.submitted && lastName.invalid }"
+                                            placeholder="Last Name" minlength="3" required>
+                                        <div *ngIf="editProfileForm.submitted && lastName.invalid"
+                                            class="invalid-feedback">
+                                            <div *ngIf="lastName.errors.minlength">Last Name must have at least 3 chars.
+                                            </div>
+                                            <div *ngIf="lastName.errors.required">Email is required</div>
+
+                                        </div>
+                                    </div>
+                                    <!-- LAST NAME FIELD end-->
+
+                                </div>
+                                <!-- NAMES FIELD end-->
+
+                            </div>
+                            <hr>
+                            <h5>Details :</h5>
+                            <div class="table-responsive mx-3">
+                                <table class="table">
+                                    <tbody>
+
+                                        <!-- EMAIL FIELD start-->
+                                        <tr>
+                                            <td> <b>Email :</b> </td>
+                                            <td>
+                                                <div *ngIf="!editActivated">{{profile.email}}</div>
+                                                <div class="form-group col-lg-12 col-12 mt-1 mb-2"
+                                                    *ngIf="editActivated">
+                                                    <input type="email" class="form-control"
+                                                        [ngModelOptions]="{standalone: true}"
+                                                        [(ngModel)]="editInfo.email" #email="ngModel"
+                                                        [ngClass]="{ 'is-invalid': editProfileForm.submitted && email.invalid }"
+                                                        placeholder="Email" email required>
+                                                    <div *ngIf="editProfileForm.submitted && email.invalid"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="email.errors.email">Email format is invalid</div>
+                                                        <div *ngIf="email.errors.required">Email is required</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <!-- EMAIL FIELD end-->
+
+                                        <!-- TEL FIELD start-->
+                                        <tr>
+                                            <td> <b>Telephone :</b> </td>
+                                            <td>
+                                                <div *ngIf="!editActivated">{{profile.tel}}</div>
+                                                <div class="form-group col-lg-12 col-12 mt-1 mb-2"
+                                                    *ngIf="editActivated">
+                                                    <input type="number" class="form-control"
+                                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="editInfo.tel"
+                                                        #tel="ngModel"
+                                                        [ngClass]="{ 'is-invalid': editProfileForm.submitted && tel.invalid }"
+                                                        placeholder="Tel" pattern="^[0-9]{8}$" required>
+                                                    <div *ngIf="editProfileForm.submitted && tel.invalid"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="tel.errors.pattern">Telephone must be 8 digits</div>
+                                                        <div *ngIf="tel.errors.required">Telephone Number is required
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <!-- TEL FIELD end-->
+
+                                        <!-- ADDRESS FIELD start-->
+                                        <tr>
+                                            <td> <b>Address :</b> </td>
+                                            <td>
+                                                <div *ngIf="!editActivated">{{profile.address}}</div>
+                                                <div class="form-group col-lg-12 col-12 mt-1 mb-2"
+                                                    *ngIf="editActivated">
+                                                    <input type="text" class="form-control"
+                                                        [ngModelOptions]="{standalone: true}"
+                                                        [(ngModel)]="editInfo.address" #address="ngModel"
+                                                        [ngClass]="{ 'is-invalid': editProfileForm.submitted && address.invalid }"
+                                                        placeholder="Address" required>
+                                                    <div *ngIf="editProfileForm.submitted && address.invalid"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="address.errors.required">Your address is required
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                        <!-- ADDRESS FIELD end-->
+
+
+                                        <!-- BIRTHDAY FIELD start-->
+                                        <tr *ngIf="isAssistant">
+                                            <td> <b>Birthdate :</b> </td>
+                                            <td>{{profile.birthdate | date}}</td>
+                                        </tr>
+                                        <!-- BIRTHDAY FIELD end-->
+
+
+                                        <!-- GENDER FIELD start-->
+                                        <tr *ngIf="isAssistant">
+                                            <td> <b>Gender :</b> </td>
+                                            <td>{{profile.gender}}</td>
+                                        </tr>
+                                        <!-- GENDER FIELD end-->
+
+                                        <!-- CV FIELD start-->
+                                        <tr *ngIf="isAssistant">
+                                            <td> <b>Curriculum Vitae :</b> </td>
+                                            <td colspan="2">
+                                                <div *ngIf="editActivated">
+                                                    <div class="input-group input-group-file">
+                                                        <input type="file" #cvFilePicker
+                                                            (change)="onSelectedFile($event, 'cv')" class="form-control"
+                                                            id="inputGroupFile02">
+
+                                                        <label class="" for="inputGroupFile02">{{cvFileName}}</label>
+
+                                                        <i class="bi-cloud-arrow-up ms-auto"
+                                                            requiredFileType="application/pdf"
+                                                            (click)="cvFilePicker.click()"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <iframe [src]='cvUrl' width="100%" height="800"></iframe>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <!-- CV FIELD end-->
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- PWD FIELD FOR CONFIRMATION start -->
+                            <div class="form-group col-lg-12 col-12 mt-1 mb-2 row" *ngIf="editActivated">
+                                <div class="col-lg-6 col-6">
+                                    <label style="color: green; font-weight: bolder; text-decoration: overline underline;" for="">
+                                        Enter your Password Please :
+                                    </label>
+                                </div>
+                                <div class="col-lg-6 col-6">
+                                    <input type="password" class="form-control" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="editInfo.pwd" #pwd="ngModel"
+                                        [ngClass]="{ 'is-invalid': editProfileForm.submitted && pwd.invalid }"
+                                        placeholder="Password" required>
+                                </div>
+
+                            </div>
+                            <div *ngIf="editProfileForm.submitted && !editInfo.pwd"
+                                class="mt-3 text-center alert alert-danger">
+                                Please enter your password to confirm changes.
+                            </div>
+                            <!-- PWD FIELD FOR CONFIRMATION end -->
+
+                            <hr>
+                            <div class="news-block-info">
+                                <div class="d-flex mt-2">
+                                    <div class="news-block-date">
+                                        <p *ngIf="!editInfo.subscriptionDate">
+                                            <i class="bi-calendar4 custom-icon me-1"></i>
+                                            Member since October 12, 2022
+                                        </p>
+                                        <p *ngIf="editInfo.subscriptionDate">
+                                            <i class="bi-calendar4 custom-icon me-1"></i>
+                                            Member since {{editInfo.subscriptionDate}}
+                                        </p>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!-- CARD BODY end-->
+                    </div>
+                </div>
+            </div>
+
+            <!-- BUTTONS FIELD start-->
+            <div class="text-center mt-3">
+
+                <button *ngIf="!editActivated" style="flex-grow: 1; margin-right: 10px; width: 300px;" type="button"
+                    (click)="editProfile()" class="btn btn-info btn-lg">Edit</button>
+                <button *ngIf="editActivated" style="flex-grow: 1; margin-right: 10px; width: 300px;" type="button"
+                    (click)="cancelEditProfile()" class="btn btn-danger btn-lg">Cancel</button>
+                <button *ngIf="editActivated " style="flex-grow: 1; margin-right: 10px; width: 300px;"
+                    type="submit" class="btn btn-success btn-lg"
+                    [disabled]="!editInfo.pwd">Confirm</button>
+
+            </div>
+            <!-- BUTTONS FIELD end-->
+
+        </form>
+
+
+    </div>
+</section>

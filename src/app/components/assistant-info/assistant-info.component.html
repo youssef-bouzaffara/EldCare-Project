@@ -1,0 +1,222 @@
+<section class="news-detail-header-section text-center">
+    <div class="section-overlay"></div>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12">
+                <h1 class="text-white">Assistant's Information</h1>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="news-section section-padding section-bg">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-lg-4 col-12 mx-auto mt-4 mt-lg-0">
+                <div class="category-block d-flex flex-column">
+                    <h5 class="mb-3 mb-lg-5">Information :</h5>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td> <b>First Name :</b> </td>
+                                    <td>{{assistant.firstName}}</td>
+                                </tr>
+                                <tr>
+                                    <td> <b>Last Name :</b> </td>
+                                    <td>{{assistant.lastName}}</td>
+                                </tr>
+                                <tr>
+                                    <td> <b>Email :</b> </td>
+                                    <td>{{assistant.email}}</td>
+                                </tr>
+                                <tr>
+                                    <td> <b>Telephone :</b> </td>
+                                    <td>+(216) {{assistant.tel}}</td>
+                                </tr>
+                                <tr>
+                                    <td> <b>Address :</b> </td>
+                                    <td>{{assistant.address}}</td>
+                                </tr>
+                                <tr>
+                                    <td> <b>Birthdate :</b> </td>
+                                    <td>{{assistant.birthdate | date}}</td>
+                                </tr>
+                                <tr>
+                                    <td> <b>Gender :</b> </td>
+                                    <td>{{assistant.gender}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="col-lg-5 col-12  mx-auto mt-lg-0">
+                <div class="news-block">
+                    <div class="news-block-top">
+                        <img [src]="assistant.avatar"
+                            class="news-image img-fluid rounded-circle" style="height: 450px; width: 450px;" alt="">                        
+                    </div>
+
+                    
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-12 mx-auto mt-4 mt-lg-0">
+
+                <div class="category-block d-flex flex-column">
+                    <h5 class="mb-1 mb-lg-5">Curriculum Vitae :</h5>   
+                </div>
+                <div class="text-center">
+                    <iframe [src]='cvUrl' width="100%" height="700" framborder="0"></iframe>
+                    <a class="button" [href]="cvUrl" download target="_blank">Download PDF</a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-12 mx-auto mt-lg-0">
+
+                <div class="category-block d-flex flex-column">
+                    <h5 class="mb-1 mb-lg-5">Location :</h5>   
+                </div>
+                <div id="map" style="height: 700px;"></div>
+            </div>
+
+           
+
+            
+
+            <div class="news-block-info" style="margin-bottom: -100px;">
+                <div class="d-flex mt-2">
+                    <div class="news-block-date">
+                        <p *ngIf="!assistant.subscriptionDate">
+                            <i class="bi-calendar4 custom-icon me-1"></i>
+                            Member since October 12, 2022
+                        </p>
+                        <p *ngIf="assistant.subscriptionDate">
+                            <i class="bi-calendar4 custom-icon me-1"></i>
+                            Member since {{assistant.subscriptionDate}}
+                        </p>
+                    </div>
+
+                   
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+</section>
+
+<section class="news-section section-padding">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-7 col-12">
+                <div class="news-block">
+                   
+
+                    <div class="news-block-info">
+                        
+                            
+
+                        <div class="col-lg-12 col-12">
+                            <h3>Comments</h3>
+                        </div>
+
+                        <div class="social-share border-top d-flex flex-wrap align-items-center">
+                            <div class="tags-block me-auto">
+                               
+                            </div>
+
+                            <div class="d-flex py-5">
+                                <a href="#" class="social-icon-link bi-facebook"></a>
+
+                                <a href="#" class="social-icon-link bi-twitter"></a>
+
+                                <a href="#" class="social-icon-link bi-printer"></a>
+
+                                <a href="#" class="social-icon-link bi-envelope"></a>
+                            </div>
+                        </div>
+
+                        <div class="author-comment d-flex mt-3 mb-4">
+                            <img src="assets/images/avatar/studio-portrait-emotional-happy-funny.jpg"
+                                class="img-fluid avatar-image" alt="">
+
+                            <div class="author-comment-info ms-3">
+                                <h6 class="mb-1">Jack</h6>
+
+                                <p class="mb-0">Kind Heart Charity is the most supportive organization. This is
+                                    Bootstrap 5 HTML CSS template for everyone. Thank you.</p>
+
+                                <div class="d-flex mt-2">
+                                    <a href="#" class="author-comment-link me-3">Like</a>
+
+                                    <a href="#" class="author-comment-link">Reply</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="author-comment d-flex ms-5 ps-3">
+                            <img src="assets/images/avatar/pretty-blonde-woman-wearing-white-t-shirt.jpg"
+                                class="img-fluid avatar-image" alt="">
+
+                            <div class="author-comment-info ms-3">
+                                <h6 class="mb-1">Daisy</h6>
+
+                                <p class="mb-0">Sed leo nisl, posuere at molestie ac, suscipit auctor mauris.
+                                    Etiam quis metus elementum, tempor risus vel, condimentum orci</p>
+
+                                <div class="d-flex mt-2">
+                                    <a href="#" class="author-comment-link me-3">Like</a>
+
+                                    <a href="#" class="author-comment-link">Reply</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="author-comment d-flex mt-3 mb-4">
+                            <img src="assets/images/avatar/portrait-young-redhead-bearded-male.jpg"
+                                class="img-fluid avatar-image" alt="">
+
+                            <div class="author-comment-info ms-3">
+                                <h6 class="mb-1">Wilson</h6>
+
+                                <p class="mb-0">Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg
+                                    kohm tokito Professional charity theme based on Bootstrap</p>
+
+                                <div class="d-flex mt-2">
+                                    <a href="#" class="author-comment-link me-3">Like</a>
+
+                                    <a href="#" class="author-comment-link">Reply</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form class="custom-form comment-form mt-4" action="#" method="post" role="form">
+                            <h6 class="mb-3">Write a comment</h6>
+
+                            <textarea name="comment-message" rows="4" class="form-control" id="comment-message"
+                                placeholder="Your comment here"></textarea>
+
+                            <div class="col-lg-3 col-md-4 col-6 ms-auto">
+                                <button type="submit" class="form-control">Comment</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            
+
+        </div>
+        <div  class="text-center mt-5" style="display: flex; justify-content: flex-end;">
+            <button *ngIf="showButton" type="button" id="fixedButton" class="btn btn-info btn-lg" (click)="contactAssistant()" style="font-weight: 600; color: white;">Contact Assistant</button>
+        </div>
+    </div>
+</section>

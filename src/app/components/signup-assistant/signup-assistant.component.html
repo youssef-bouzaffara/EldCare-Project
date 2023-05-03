@@ -1,0 +1,184 @@
+<form [formGroup]="signupAssistantForm">
+
+    <div class="col-lg-12 col-12">
+        <input type="text" formControlName="firstName" class="form-control"
+            placeholder="First Name">
+    </div>
+    <div class="col-lg-12 col-12" style="margin-top: -20px; margin-bottom: 20px;" *ngIf="signupAssistantForm.controls['firstName'].invalid && (
+            signupAssistantForm.controls['firstName'].touched || 
+            signupAssistantForm.controls['firstName'].dirty)">
+
+        <div class="col-lg-12 col-12" *ngIf="signupAssistantForm.controls['firstName'].errors.required" style="color: red;">
+            First Name is required.
+        </div>
+        <div class="col-lg-12 col-12" *ngIf="signupAssistantForm.controls['firstName'].errors.minlength" style="color: red;">
+            First Name must have at least 3 chars.
+        </div>
+
+    </div>
+
+    <div class="col-lg-12 col-12">
+        <input type="text" formControlName="lastName" class="form-control"
+            placeholder="Last Name">
+    </div>
+    <div class="col-lg-12 col-12" style="margin-top: -20px; margin-bottom: 20px;" *ngIf="signupAssistantForm.controls['lastName'].invalid && (
+            signupAssistantForm.controls['lastName'].touched || 
+            signupAssistantForm.controls['lastName'].dirty)">
+
+        <div class="col-lg-12 col-12" *ngIf="signupAssistantForm.controls['lastName'].errors.required" style="color: red;">
+            Last Name is required.
+        </div>
+        <div class="col-lg-12 col-12" *ngIf="signupAssistantForm.controls['lastName'].errors.minlength" style="color: red;">
+            Last Name must have at least 3 chars.
+        </div>
+
+    </div>
+
+    <div class="col-lg-12 col-12">
+        <input type="email" formControlName="email" class="form-control" placeholder="Email">
+    </div>
+    <div class="col-lg-12 col-12" style="margin-top: -20px; margin-bottom: 20px;" *ngIf="signupAssistantForm.controls['email'].invalid && (
+            signupAssistantForm.controls['email'].touched || 
+            signupAssistantForm.controls['email'].dirty)">
+
+        <div class="col-lg-12 col-12" *ngIf="signupAssistantForm.controls['email'].errors.required" style="color: red;">
+            Email is required
+        </div>
+        <div class="col-lg-12 col-12" *ngIf="signupAssistantForm.controls['email'].errors.email" style="color: red;">
+            Invalid Format
+        </div>
+
+    </div>
+
+    <div class="col-lg-12 col-12">
+        <input type="number" formControlName="tel" class="form-control"
+            placeholder="Telephone Number">
+    </div>
+    <div class="col-lg-12 col-12" style="margin-top: -20px; margin-bottom: 20px;" *ngIf="signupAssistantForm.controls['tel'].invalid && (
+            signupAssistantForm.controls['tel'].touched ||
+            signupAssistantForm.controls['tel'].dirty)">
+
+        <div class="col-lg-12 col-12" *ngIf="signupAssistantForm.controls['tel'].errors.required" style="color: red;">
+            Telephone Number is required
+        </div>
+        <div class="col-lg-12 col-12" *ngIf="signupAssistantForm.controls['tel'].errors.pattern" style="color: red;">
+            Telephone Number must be 8 digits
+        </div>
+
+    </div>
+
+    <div class="col-lg-12 col-12">
+        <input type="password" formControlName="pwd" class="form-control"
+            placeholder="Password">
+    </div>
+    <div class="col-lg-12 col-12" style="margin-top: -20px; margin-bottom: 20px;" *ngIf="signupAssistantForm.controls['pwd'].invalid && (
+            signupAssistantForm.controls['pwd'].touched ||
+            signupAssistantForm.controls['pwd'].dirty)">
+
+        <div class="col-lg-12 col-12" *ngIf="signupAssistantForm.controls['pwd'].errors.required" style="color: red;">
+            Password is required
+        </div>
+        <div class="col-lg-12 col-12" *ngIf="signupAssistantForm.controls['pwd'].errors.pattern" style="color: red;">
+            <div>Password must be 8 chars length at least,</div>
+            <div>Password must have one speacial char at least,</div>
+            <div>Password must have one upper case char at least,</div>
+            <div>Password must have one number char at least.</div>
+        </div>
+
+    </div>
+
+    <div class="col-lg-12 col-12">
+        <input type="password" formControlName="confirmPwd" class="form-control"
+            placeholder="Confirm Password">
+    </div>
+    <div class="col-lg-12 col-12" style="margin-top: -20px; margin-bottom: 20px;" *ngIf="signupAssistantForm.controls['confirmPwd'].invalid && (
+            signupAssistantForm.controls['confirmPwd'].touched ||
+            signupAssistantForm.controls['confirmPwd'].dirty)">
+
+        <div class="col-lg-12 col-12" *ngIf="signupAssistantForm.controls['confirmPwd'].errors.required" style="color: red;">
+            Confirm Password is required
+        </div>
+        <div class="col-lg-12 col-12" *ngIf="signupAssistantForm.get('confirmPwd').hasError('passwordsNotMatch')" style="color: red;">
+            Passwords do not match
+        </div>
+
+    </div>
+
+    <div class="col-lg-12 col-12">
+        <input type="text" formControlName="address" class="form-control"
+            placeholder="Address">
+    </div>
+    <div class="col-lg-12 col-12" style="margin-top: -20px; margin-bottom: 20px;" *ngIf="signupAssistantForm.controls['address'].invalid && (
+            signupAssistantForm.controls['address'].touched || 
+            signupAssistantForm.controls['address'].dirty)">
+
+        <div class="col-lg-12 col-12" *ngIf="signupAssistantForm.controls['address'].errors.required" style="color: red;">
+            Address is required.
+        </div>
+
+    </div>
+
+    <div class="col-lg-12 col-12">
+
+        <div class="row mb-1">
+            <label for="birthdate" class="col-sm-2 col-form-label">Birthdate:</label>
+            <div class="col-sm-10">
+                <input type="date" id="birthdate" formControlName="birthdate" class="form-control" placeholder="Your BirthDate">
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-12" style="margin-top: -20px; margin-bottom: 20px;" *ngIf="signupAssistantForm.controls['birthdate'].invalid && (
+            signupAssistantForm.controls['birthdate'].touched || 
+            signupAssistantForm.controls['birthdate'].dirty)">
+
+        <div class="col-lg-12 col-12" *ngIf="signupAssistantForm.controls['birthdate'].errors.required" style="color: red;">
+            Birthdate is required.
+        </div>
+
+    </div>
+
+    <div class="col-lg-12 col-12">
+
+        <div class="row mb-3">
+            <label for="gender" class="col-sm-2 col-form-label">Gender:</label>
+            <div class="col-sm-10">
+                <select class="form-select" aria-label="Default select example"
+                    formControlName="gender" id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-12" style="margin-top: -20px; margin-bottom: 20px;" *ngIf="signupAssistantForm.controls['gender'].invalid && (
+            signupAssistantForm.controls['gender'].touched || 
+            signupAssistantForm.controls['gender'].dirty)">
+
+        <div class="col-lg-12 col-12" *ngIf="signupAssistantForm.controls['gender'].errors.required" style="color: red;">
+            Gender is required.
+        </div>
+
+    </div>
+
+    <div class="col-lg-12 col-12">
+        <div class="input-group input-group-file">
+            <input type="file" formControlName="cv" #filePicker (change)="onSelectedFile($event)" class="form-control" id="inputGroupFile02">
+
+            <label class="input-group-text" for="inputGroupFile02">{{fileName}}</label>
+
+            <i class="bi-cloud-arrow-up ms-auto" requiredFileType="application/pdf" (click)="filePicker.click()"></i>
+        </div>
+    </div>
+    <div class="col-lg-12 col-12" style="margin-top: -20px; margin-bottom: 20px;" *ngIf="signupAssistantForm.controls['cv'].invalid && (
+            signupAssistantForm.controls['cv'].touched || 
+            signupAssistantForm.controls['cv'].dirty)">
+
+        <div class="col-lg-12 col-12" *ngIf="signupAssistantForm.controls['cv'].errors.required" style="color: red;">
+            Please insert your Curriculum Vitae with PDF extension. 
+        </div>
+
+    </div>
+
+    <button type="submit" (click)="signupAssitant()" [disabled]="signupAssistantForm.invalid" class="form-control">Subscribe</button>
+    <div class="col-lg-12 col-12 text-center" style="color: red;">{{msgErr}}</div>
+</form>

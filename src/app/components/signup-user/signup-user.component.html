@@ -1,0 +1,135 @@
+<form [formGroup]="signupUserForm">
+
+    <div class="col-lg-12 col-12">
+        <input type="text" formControlName="firstName" class="form-control" placeholder="First Name">
+    </div>
+    <div class="col-lg-12 col-12" style="margin-top: -20px; margin-bottom: 20px;" *ngIf="signupUserForm.controls['firstName'].invalid && (
+            signupUserForm.controls['firstName'].touched || 
+            signupUserForm.controls['firstName'].dirty)">
+
+        <div class="col-lg-12 col-12" *ngIf="signupUserForm.controls['firstName'].errors.required" style="color: red;">
+            First Name is required.
+        </div>
+        <div class="col-lg-12 col-12" *ngIf="signupUserForm.controls['firstName'].errors.minlength" style="color: red;">
+            First Name must have at least 3 chars.
+        </div>
+
+    </div>
+
+    <div class="col-lg-12 col-12">
+        <input type="text" formControlName="lastName" class="form-control" placeholder="Last Name">
+    </div>
+    <div class="col-lg-12 col-12" style="margin-top: -20px; margin-bottom: 20px;" *ngIf="signupUserForm.controls['lastName'].invalid && (
+            signupUserForm.controls['lastName'].touched || 
+            signupUserForm.controls['lastName'].dirty)">
+
+        <div class="col-lg-12 col-12" *ngIf="signupUserForm.controls['lastName'].errors.required" style="color: red;">
+            Last Name is required.
+        </div>
+        <div class="col-lg-12 col-12" *ngIf="signupUserForm.controls['lastName'].errors.minlength" style="color: red;">
+            Last Name must have at least 3 chars.
+        </div>
+
+    </div>
+
+    <div class="col-lg-12 col-12">
+        <input type="email" formControlName="email" class="form-control" placeholder="Email">
+    </div>
+    <div class="col-lg-12 col-12" style="margin-top: -20px; margin-bottom: 20px;" *ngIf="signupUserForm.controls['email'].invalid && (
+            signupUserForm.controls['email'].touched || 
+            signupUserForm.controls['email'].dirty)">
+
+        <div class="col-lg-12 col-12" *ngIf="signupUserForm.controls['email'].errors.required" style="color: red;">
+            Email is required
+        </div>
+        <div class="col-lg-12 col-12" *ngIf="signupUserForm.controls['email'].errors.email" style="color: red;">
+            Invalid Format
+        </div>
+
+    </div>
+
+
+
+    <div class="col-lg-12 col-12">
+        <input type="number" formControlName="tel" class="form-control" placeholder="Telephone Number">
+    </div>
+    <div class="col-lg-12 col-12" style="margin-top: -20px; margin-bottom: 20px;" *ngIf="signupUserForm.controls['tel'].invalid && (
+            signupUserForm.controls['tel'].touched ||
+            signupUserForm.controls['tel'].dirty)">
+
+        <div class="col-lg-12 col-12" *ngIf="signupUserForm.controls['tel'].errors.required" style="color: red;">
+            Telephone Number is required
+        </div>
+        <div class="col-lg-12 col-12" *ngIf="signupUserForm.controls['tel'].errors.pattern" style="color: red;">
+            Telephone Number must be 8 digits
+        </div>
+
+    </div>
+
+    <div class="col-lg-12 col-12">
+        <input type="password" formControlName="pwd" class="form-control" placeholder="Password">
+    </div>
+    <div class="col-lg-12 col-12" style="margin-top: -20px; margin-bottom: 20px;" *ngIf="signupUserForm.controls['pwd'].invalid && (
+            signupUserForm.controls['pwd'].touched ||
+            signupUserForm.controls['pwd'].dirty)">
+
+        <div class="col-lg-12 col-12" *ngIf="signupUserForm.controls['pwd'].errors.required" style="color: red;">
+            Password is required
+        </div>
+        <div class="col-lg-12 col-12" *ngIf="signupUserForm.controls['pwd'].errors.pattern" style="color: red;">
+            <div>Password must be 8 chars length at least,</div>
+            <div>Password must have one speacial char at least,</div>
+            <div>Password must have one upper case char at least,</div>
+            <div>Password must have one number char at least.</div>
+        </div>
+
+    </div>
+
+    <div class="col-lg-12 col-12">
+        <input type="password" formControlName="confirmPwd" class="form-control" placeholder="Confirm Password">
+    </div>
+    <div class="col-lg-12 col-12" style="margin-top: -20px; margin-bottom: 20px;" *ngIf="signupUserForm.controls['confirmPwd'].invalid && (
+            signupUserForm.controls['confirmPwd'].touched ||
+            signupUserForm.controls['confirmPwd'].dirty)">
+
+        <div class="col-lg-12 col-12" *ngIf="signupUserForm.controls['confirmPwd'].errors.required" style="color: red;">
+            Confirm Password is required
+        </div>
+        <div class="col-lg-12 col-12" *ngIf="signupUserForm.get('confirmPwd').hasError('passwordsNotMatch')"
+            style="color: red;">
+            Passwords do not match
+        </div>
+
+    </div>
+
+    <div class="col-lg-12 col-12">
+        <input type="text" formControlName="address" class="form-control" placeholder="Address">
+    </div>
+    <div class="col-lg-12 col-12" style="margin-top: -20px; margin-bottom: 20px;" *ngIf="signupUserForm.controls['address'].invalid && (
+            signupUserForm.controls['address'].touched || 
+            signupUserForm.controls['address'].dirty)">
+
+        <div class="col-lg-12 col-12" *ngIf="signupUserForm.controls['address'].errors.required" style="color: red;">
+            Address is required.
+        </div>
+
+    </div>
+
+    <div class="col-lg-12 col-12">
+        <input type="file" class="form-control" #filePicker (change)="onSelectedImg($event)"
+            style="visibility: hidden;">
+    </div>
+
+    <div class="col-lg-12 col-12 text-center" style="margin-top: -70px; margin-bottom: 20px;">
+        <button class="btn btn-info" (click)="filePicker.click()">Select your Photo</button>
+    </div>
+
+    <div class="col-lg-12 col-12 text-center my-4">
+        <img [src]="photoPreview" alt="" style="width: 200px ; height: auto;">
+    </div>
+
+    <button type="submit" (click)="signupUser()" [disabled]="signupUserForm.invalid"
+        class="form-control">Subscribe</button>
+
+    <div class="col-lg-12 col-12 text-center" style="color: red;">{{msgErr}}</div>
+</form>

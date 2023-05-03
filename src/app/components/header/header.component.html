@@ -1,0 +1,147 @@
+<header class="site-header">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-8 col-12 d-flex flex-wrap">
+                <p class="d-flex me-4 mb-0">
+                    <i class="bi-geo-alt me-2"></i>
+                    Airport Street 20, 4277 Ariana, Tunisia
+                </p>
+
+                <p class="d-flex mb-0">
+                    <i class="bi-envelope me-2"></i>
+
+                    <a href="mailto:eldcare@gmail.com">
+                        eldcare@gmail.com
+                    </a>
+                </p>
+            </div>
+
+            <div class="col-lg-3 col-12 ms-auto d-lg-block d-none">
+                <ul class="social-icon">
+                    <li class="social-icon-item">
+                        <a href="#" class="social-icon-link bi-twitter"></a>
+                    </li>
+
+                    <li class="social-icon-item">
+                        <a href="#" class="social-icon-link bi-facebook"></a>
+                    </li>
+
+                    <li class="social-icon-item">
+                        <a href="#" class="social-icon-link bi-instagram"></a>
+                    </li>
+
+                    <li class="social-icon-item">
+                        <a href="#" class="social-icon-link bi-youtube"></a>
+                    </li>
+
+                    <li class="social-icon-item">
+                        <a href="#" class="social-icon-link bi-whatsapp"></a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<nav class="navbar navbar-expand-lg bg-light shadow-lg">
+    <div class="container">
+        <a class="navbar-brand" routerLink="">
+            <img src="assets/images/logo.png" class="logo img-fluid" alt="Kind Heart Charity">
+            <span>
+                Eld<span style="color: darkslategray;">Care</span>
+                <small>The best Helping Hand</small>
+            </span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link click-scroll" routerLink="">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link click-scroll" (click)="navigateToSection('section_2')"  href="#section_2">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link click-scroll" *ngIf="userIsAuthenticated && userRole==='admin'" routerLink="admin">My Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link click-scroll" *ngIf="userIsAuthenticated && userRole==='user'" routerLink="dashboardUser">My Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link click-scroll" *ngIf="userIsAuthenticated && userRole==='assistant'" routerLink="dashboardAssistant">My Dashboard</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link click-scroll"  routerLink="allAssistants">Assistants</a>
+                </li>
+
+
+                
+
+                <li class="nav-item">
+                    <a class="nav-link click-scroll" (click)="navigateToSection('section_6')" href="#section_6">Contact</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link click-scroll" *ngIf="!userIsAuthenticated" routerLink="signin">LogIn</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link click-scroll" *ngIf="!userIsAuthenticated" routerLink="subscription">SignUp</a>
+                </li>
+
+               
+                <li class="nav-item dropdown">
+                    <a class="nav-link click-scroll dropdown-toggle" *ngIf="userIsAuthenticated" id="navbarLightDropdownMenuLink"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">My Profile</a>
+
+                    <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" routerLink="myProfile">Edit Profile</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" routerLink="editMyPassword">Change Password</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link click-scroll" *ngIf="userIsAuthenticated" (click)="logout()" routerLink="signin">LogOut</a>
+                </li>
+
+                <li class="nav-item ms-3">
+                    <a class="nav-link custom-btn custom-border-btn btn" routerLink="search">Search</a>
+                </li>
+
+               
+            </ul>
+        </div>
+    </div>
+
+
+    <div *ngIf="userIsAuthenticated" style="margin-right: auto; margin-left: 50px;">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item ms-auto" style="margin-left: 50px;">
+                    <div class="profile">
+                        <img class="profile-pic" [src]="userAvatar">
+                        <div class="profile-name" style="font-family: Arial, Helvetica, sans-serif; font-weight: bolder;">{{ user }}</div>
+                        <span class="badge bg-secondary" style="margin-left: 8px; border-radius: 10px; font-weight: bold !important;">{{userRole}}</span>
+                    </div>
+                    
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+</nav>

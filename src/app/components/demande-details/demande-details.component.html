@@ -1,0 +1,171 @@
+<section class="news-detail-header-section text-center">
+    <div class="section-overlay"></div>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12">
+                <h1 class="text-white">Demande's Details</h1>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="news-section section-padding section-bg">
+    <div class="container">
+        <div class="row">
+
+            <div class="row col-lg-6 col-12">
+                <h5 class="mb-lg-1 text-center justify-content-center" >Client's Information :</h5>
+                
+                <div class="col-lg-5 col-12">    
+                    <div class="news-block">
+                        <div class="news-block-top">
+                            <img [src]="userInfo.avatar"
+                                class="news-image img-fluid rounded-circle" style="height: 250px; width: 250px;" alt="">
+    
+                            <!-- <div class="news-category-block">
+                                <h3>Name Last</h3>
+                            </div> -->
+    
+                            
+                        </div>
+    
+                        
+                    </div>
+                </div>
+                <div class="col-lg-7 col-12 mx-auto mt-4 mt-lg-0">
+    
+    
+                    <div class="category-block d-flex flex-column">
+                        
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td> <b>First Name :</b> </td>
+                                        <td>{{userInfo.firstName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td> <b>Last Name :</b> </td>
+                                        <td>{{userInfo.lastName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td> <b>Email :</b> </td>
+                                        <td>{{userInfo.email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td> <b>Telephone :</b> </td>
+                                        <td>{{userInfo.tel}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td> <b>Address :</b> </td>
+                                        <td>{{userInfo.address}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td> <b>Role :</b> </td>
+                                        <td>{{userInfo.role}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+            
+            <div class="row col-lg-6 col-12" style="margin-left: 20px; border-left: 1px solid #ccc;">
+                <h5 class="mb-lg-5 text-center justify-content-center" >Assistant's Information :</h5>
+                
+                <div class="col-lg-5 col-12">
+                    
+                    <div class="news-block">
+                        <div class="news-block-top">
+                            <img [src]="assistantInfo.avatar"
+                                class="news-image img-fluid rounded-circle" style="height: 250px; width: 250px;" alt="">
+    
+                            <!-- <div class="news-category-block">
+                                <h3>Name Last</h3>
+                            </div> -->
+    
+                            
+                        </div>
+    
+                        
+                    </div>
+                </div>
+                <div class="col-lg-7 col-12 mx-auto mt-4 mt-lg-0">
+    
+    
+                    <div class="category-block d-flex flex-column">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td> <b>First Name :</b> </td>
+                                        <td>{{assistantInfo.firstName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td> <b>Last Name :</b> </td>
+                                        <td>{{assistantInfo.lastName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td> <b>Email :</b> </td>
+                                        <td>{{assistantInfo.email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td> <b>Telephone :</b> </td>
+                                        <td>{{assistantInfo.tel}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td> <b>Address :</b> </td>
+                                        <td>{{assistantInfo.address}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td> <b>Birthdate :</b> </td>
+                                        <td>{{assistantInfo.birthdate | date}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td> <b>Gender :</b> </td>
+                                        <td>{{assistantInfo.gender}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td> <b>Role :</b> </td>
+                                        <td>{{assistantInfo.role}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+
+        </div>
+        <div class="mt-5 news-block-comment">
+            <p>
+                <i class="bi-chat-left custom-icon me-1"></i>
+                <span style="font-weight: 1000 !important; text-decoration: underline;">Subject :</span> "{{demandeSubj}}"
+            </p>
+          
+        </div>
+        <div class="news-block-info">
+            <div class="d-flex mt-2">
+                <div class="news-block-date">
+                    <p>
+                        <i class="bi-calendar4 custom-icon me-1"></i>
+                        <span style="font-weight: 1000 !important; text-decoration: underline;">Date of Demande :</span> {{demandeDate}}
+                    </p>
+                </div>
+
+               
+            </div>
+        </div>
+        <div class="text-center" style="display: flex;"> 
+        
+                <button style="flex-grow: 1; margin-right: 10px; width: 100px;" *ngIf="(demandeStatus === 'declined' || demandeStatus === 'withdrawn') && connectedUser === 'admin'" type="button" (click)="deleteDemande()" class="btn btn-danger btn-lg">Delete</button>
+           
+        </div>
+    </div>
+</section>
